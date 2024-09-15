@@ -1,0 +1,3 @@
+When adding/changing the models run:
+flask db migrate -m "Initial migration."
+flask db upgrade

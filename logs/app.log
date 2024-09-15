@@ -1,0 +1,102 @@
+2024-09-14 17:36:15,663 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-14 17:36:16,212 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-15 13:21:46,784 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-15 13:21:47,447 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-15 13:23:11,699 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-15 13:23:25,922 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-15 13:23:46,343 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-15 13:27:22,000 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-15 13:27:25,825 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:41]
+2024-09-15 13:50:18,895 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 13:50:37,899 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 13:50:38,646 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 13:58:22,049 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 13:58:22,766 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:01:16,276 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:04:57,441 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:05:58,294 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:06:05,287 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:07:01,598 ERROR: Exception on /api/v1/notifications [POST] [in C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User1\Desktop\kravia\backend\app\routes\main.py", line 13, in decorated_function
+    return view_function(*args, **kwargs)
+  File "C:\Users\User1\Desktop\kravia\backend\app\routes\main.py", line 43, in receive_notification
+    case = Case.query.get(data['case_id'])
+  File "<string>", line 2, in get
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\util\deprecations.py", line 386, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\query.py", line 1127, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\query.py", line 1136, in _get_impl
+    return self.session._get_impl(
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3873, in _get_impl
+    return db_load_fn(
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2226, in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\context.py", line 549, in orm_pre_session_exec
+    session._autoflush()
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3050, in _autoflush
+    self.flush()
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 4352, in flush
+    self._flush(objects)
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 4448, in _flush
+    flush_context.execute()
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 60, in save_obj
+    for (
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 223, in _organize_states_for_save
+    for state, dict_, mapper, connection in _connections_for_states(
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1753, in _connections_for_states
+    connection = uowtransaction.transaction.connection(base_mapper)
+  File "<string>", line 2, in connection
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1038, in connection
+    bind = self.session.get_bind(bindkey, **kwargs)
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\flask_sqlalchemy\session.py", line 53, in get_bind
+    engines = self._db.engines
+  File "C:\Users\User1\Desktop\kravia\backend\venv\lib\site-packages\flask_sqlalchemy\extension.py", line 690, in engines
+    raise RuntimeError(
+RuntimeError: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+2024-09-15 14:08:01,014 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:09:18,334 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:11:19,803 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:11:56,896 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:12:42,525 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:13:50,183 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:13:53,805 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:20:15,857 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:46]
+2024-09-15 14:31:42,687 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:48]
+2024-09-15 14:33:03,732 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:48]
+2024-09-15 14:33:04,462 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:48]
+2024-09-15 14:36:07,445 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:48]
+2024-09-15 14:39:47,804 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:48]
+2024-09-15 14:39:48,531 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:48]
+2024-09-15 14:42:19,380 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:42:30,310 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:42:37,807 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:44:08,037 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:44:08,799 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:44:28,329 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:45:17,007 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:52:58,573 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
+2024-09-15 14:53:43,634 INFO: Application startup [in C:\Users\User1\Desktop\kravia\backend\app\__init__.py:45]
