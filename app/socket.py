@@ -26,3 +26,6 @@ def handle_register(data):
 def send_live_notification(user_id, notification):
     print(f"Sending notification to user {user_id}: {notification}")
     socketio.emit('new_notification', notification, room=user_id)
+
+def is_user_active(user_id):
+    return str(user_id) in connected_users.values()
