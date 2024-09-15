@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, current_app
 from app.models import db, Notification, Case, User
+from services.email_service import create_email_notification
 from app.socket import send_notification
 from datetime import datetime, timezone
 from functools import wraps
@@ -48,6 +49,18 @@ def receive_notification():
             case.is_active = False
             case.halt_reason = data['reason']
             case.updated_at = new_notification.timestamp
+            debtor = User.query.get(case.debtor_id)
+            if debtor:
+                debtor.address_status = 'invalid'
+                debtor.address = None
+
+        create_email_notification(creditor.id, case.id)
+
+        current_app.logger.info(f"Notification received for case {data['case_id']}")
+# ... (after sending WebSocket notification)
+        current_app.logger.info(f"WebSocket notification sent for case {case.id}")
+        # ... (after creating email notification)
+        current_app.logger.info(f"Email notification created for case {case.id}")
     
     try:
         db.session.commit()
@@ -71,18 +84,16 @@ def receive_notification():
 @main.route('/api/v1/create_test_data', methods=['POST'])
 @require_api_key
 def create_test_data():
-    # Create a test user (creditor)
-    test_user = User(name="Test Creditor", email="test@example.com")
+    # Create a test user and attached to case
+    test_user = User(name="Test Debtor", email="test3@example.com", address='Test Address 3')
     db.session.add(test_user)
     db.session.flush()  # This will assign an ID to test_user
 
-    # Create a test case
-    db.session.get
     test_case = Case(
-        debtor_id=1,  # This is a placeholder, as we don't have a real debtor
+        debtor_id=3,  # This is a placeholder, as we don't have a real debtor
         creditor_id=test_user.id,
         status="active",
-        is_active=True
+        is_active=True,
     )
     db.session.add(test_case)
     
