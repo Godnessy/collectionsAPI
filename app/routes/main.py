@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, current_app
 from app.models import db, Notification, Case, User
-from services.email_service import create_email_notification
-from app.socket import send_notification
+from app.services.email_service import create_email_notification
+from app.socket import send_live_notification
 from datetime import datetime, timezone
 from functools import wraps
 
@@ -53,14 +53,8 @@ def receive_notification():
             if debtor:
                 debtor.address_status = 'invalid'
                 debtor.address = None
-
+        creditor = User.query.get(case.creditor_id)
         create_email_notification(creditor.id, case.id)
-
-        current_app.logger.info(f"Notification received for case {data['case_id']}")
-# ... (after sending WebSocket notification)
-        current_app.logger.info(f"WebSocket notification sent for case {case.id}")
-        # ... (after creating email notification)
-        current_app.logger.info(f"Email notification created for case {case.id}")
     
     try:
         db.session.commit()
@@ -73,7 +67,9 @@ def receive_notification():
                     'case_id': case.id,
                     'message': f'Case {case.id} has been updated due to an invalid address.'
                 }
-                send_notification(str(creditor.id), notification_data)
+                send_live_notification(str(creditor.id), notification_data)
+                current_app.logger.info(f"Notification received for case {data['case_id']}")
+
         
     except Exception as e:
         db.session.rollback()
