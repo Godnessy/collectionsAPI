@@ -1,0 +1,93 @@
+# 📬 Debt Collection Notification System
+
+## 🌟 Overview
+
+This system manages notifications for invalid debtor addresses in the debt collection process. It provides an API for postal services to report invalid addresses and notifies creditors through multiple channels.
+
+### 🚀 Key Features
+
+- 🔔 Real-time notifications via WebSocket
+- 📧 Email notifications for inactive users
+- 🔒 Secure API with authentication
+- 📊 Comprehensive case management
+
+## 🛠 Installation
+
+### Prerequisites
+
+- Python 3.8+
+- pip
+
+### Steps
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/your-username/debt-collection-notification-system.git
+   cd debt-collection-notification-system
+
+Create a virtual environment
+bashCopypython -m venv venv
+
+Activate the virtual environment
+
+On Windows:
+bashCopyvenv\Scripts\activate
+
+On macOS and Linux:
+bashCopysource venv/bin/activate
+
+
+
+Install the requirements
+bashCopypip install -r requirements.txt
+
+Set up environment variables
+Create a .env file in the root directory and add:
+CopySECRET_KEY=your_secret_key
+DATABASE_URL=sqlite:///app.db
+API_KEY=your_api_key
+
+Initialize the database
+bashCopyflask db init
+flask db migrate -m "Initial migration"
+flask db upgrade
+
+
+🚀 Running the Application
+
+Start the Flask server
+bashCopypython run.py
+
+Access the WebSocket test page
+Open static/websocket_test.html in your web browser.
+
+🔧 Usage
+API Endpoints
+
+POST /api/v1/notifications: Receive notifications about invalid addresses
+GET /api/v1/user/<user_id>/cases: Retrieve cases for a specific user
+
+WebSocket Events
+
+connect: Client connects to the WebSocket server
+disconnect: Client disconnects from the WebSocket server
+register: Register a user for real-time notifications
+new_notification: Receive a new notification
+
+🔒 Security
+
+API key authentication for sensitive endpoints
+HTTPS for encrypted data transmission (in production)
+WebSocket for secure real-time communications
+
+
+When adding/changing the models run:
+flask db migrate -m "Initial migration."
+flask db upgrade
+
+
+
+To start the frontend:
+Invoke-item .\static\websocket_test.html 
+or open it in 
