@@ -18,7 +18,7 @@ def require_api_key(view_function):
 
 @main.route('/')
 def index():
-    return "sessions live"
+    return "session is live"
 
 @main.route('/api/v1/notifications', methods=['POST'])
 @require_api_key
@@ -95,7 +95,7 @@ def create_test_data():
         return jsonify({
             'message': 'Test data created successfully',
             'user_id': test_user.id,
-            'case_id': test_case.id
+            'cas`e_id': test_case.id
         }), 201
     except Exception as e:
         db.session.rollback()
